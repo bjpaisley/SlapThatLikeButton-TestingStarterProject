@@ -1,12 +1,56 @@
 [build-system]
-requires = ["setuptools>=42.0", "wheel"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "slapping"
+description = "slap that like button"
+version = "0.1.0"
+authors = [{ name = "James Murphy" }]
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = []
+
+[project.urls]
+# Optional – you can add:
+# Homepage = "https://example.com"
+# Source = "https://github.com/..."
+
+[project.optional-dependencies]
+testing = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "mypy>=0.910",
+    "flake8>=3.9",
+    "tox>=3.24",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+"slapping" = ["py.typed"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=slapping"
 testpaths = [
     "tests",
 ]
+
+[tool.flake8]
+max-line-length = 160
 
 [tool.mypy]
 mypy_path = "src"
